@@ -1,4 +1,4 @@
-package pokergame;
+package baccaratgame;
 import javax.swing.*;
 import java.awt.*;
 

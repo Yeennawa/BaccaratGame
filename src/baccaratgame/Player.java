@@ -1,4 +1,4 @@
-package pokergame;
+package baccaratgame;
 
 public class Player {
     int hearts = 3;

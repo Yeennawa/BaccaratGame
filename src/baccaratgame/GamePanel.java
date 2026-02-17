@@ -1,11 +1,11 @@
-package pokergame;
+package baccaratgame;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
 
-    Pokergame game = new Pokergame();
+    Baccaratgame game = new Baccaratgame();
 
     JLabel p1,p2,p3,b1,b2,b3;
 
@@ -116,7 +116,7 @@ public class GamePanel extends JPanel {
         java.net.URL url=getClass().getResource(path);
 
         if(url==null){
-            System.out.println("ไม่เจอรูป "+path);
+
             return new ImageIcon();
         }
 

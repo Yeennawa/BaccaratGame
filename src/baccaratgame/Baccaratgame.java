@@ -1,8 +1,8 @@
-package pokergame;
+package baccaratgame;
 
 import java.util.Random;
 
-public class Pokergame {
+public class Baccaratgame {
 
     Player player = new Player();
     Player bot = new Player();
