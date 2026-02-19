@@ -5,7 +5,7 @@ import javax.swing.*;
 public class GameFrame extends JFrame {
     public GameFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("Poker Game");
+        this.setTitle("Baccarat Game");
         this.setResizable(false);
         this.add(new Menu(this));
         this.pack();
@@ -23,10 +23,11 @@ public class GameFrame extends JFrame {
 
     public void startGame(){
         this.getContentPane().removeAll();
-        GamePanel panel = new GamePanel();
+        GamePanel panel = new GamePanel(this);
         this.add(panel);
         this.pack();
         this.revalidate();
+        this.repaint();
         panel.requestFocus();
     }
 }

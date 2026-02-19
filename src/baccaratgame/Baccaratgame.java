@@ -27,32 +27,27 @@ public class Baccaratgame {
         p3 = draw();
     }
 
-    public void botDraw(){
+    public void botDraw() {
 
-        bot.total = cardValue(b1)+cardValue(b2);
-        bot.total %=10;
+        int currentBotTotal = (getBaccaratValue(b1) + getBaccaratValue(b2)) % 10;
 
-        if(bot.total<4){
+        int currentPlayerTotal = playerTotal();
+
+        if (currentBotTotal < currentPlayerTotal) {
             b3 = draw();
         }
     }
 
-    public int playerTotal(){
-
-        int t = cardValue(p1)+cardValue(p2);
-
-        if(p3>0) t+=cardValue(p3);
-
-        return t%10;
+    public int playerTotal() {
+        int t = getBaccaratValue(p1) + getBaccaratValue(p2);
+        if (p3 != -1) t += getBaccaratValue(p3);
+        return t % 10;
     }
 
-    public int botTotal(){
-
-        int t = cardValue(b1)+cardValue(b2);
-
-        if(b3>0) t+=cardValue(b3);
-
-        return t%10;
+    public int botTotal() {
+        int t = getBaccaratValue(b1) + getBaccaratValue(b2);
+        if (b3 != -1) t += getBaccaratValue(b3);
+        return t % 10;
     }
 
     public String judge(){
@@ -73,8 +68,9 @@ public class Baccaratgame {
         return rand.nextInt(13)+1;
     }
 
-    public int cardValue(int n){
-        if(n>=10) return 10;
+    public int getBaccaratValue(int n) {
+        if (n <= 0) return 0;
+        if (n >= 10) return 0;
         return n;
     }
 }

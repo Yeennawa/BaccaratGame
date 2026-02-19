@@ -8,9 +8,10 @@ public class GamePanel extends JPanel {
     Baccaratgame game = new Baccaratgame();
 
     JLabel p1,p2,p3,b1,b2,b3;
+    GameFrame frame ;
 
-    public GamePanel(){
-
+    public GamePanel(GameFrame frame){
+        this.frame=frame;
         setPreferredSize(new Dimension(1280,720));
         setLayout(null);
         setOpaque(false);
@@ -71,8 +72,23 @@ public class GamePanel extends JPanel {
         JButton stop = new JButton("Stop");
         stop.setFont(new Font("Tahoma", Font.BOLD, 20));
         stop.setBounds(950, 480, 150, 60);
-        stop.addActionListener(e -> endRound());
 
+        stop.addActionListener(e -> {
+
+            game.botDraw();
+
+            if (game.b3 > 0) {
+                b3 = new JLabel(card(game.b3));
+                b3.setBounds(startX + (cardW + gap) * 2, 50, cardW, cardH);
+                bg.add(b3);
+                bg.revalidate();
+                bg.repaint();
+            }
+
+            Timer t = new Timer(800, ev -> endRound());
+            t.setRepeats(false);
+            t.start();
+        });
         bg.add(draw);
         bg.add(stop);
 
@@ -95,7 +111,7 @@ public class GamePanel extends JPanel {
         }else{
             JOptionPane.showMessageDialog(this,
                     game.player.isAlive()?"YOU WIN":"BOT WIN");
-            System.exit(0);
+            frame.showMenu();
         }
     }
 
