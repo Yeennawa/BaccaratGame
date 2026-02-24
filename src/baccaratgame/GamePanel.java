@@ -87,6 +87,21 @@ public class GamePanel extends JPanel {
         bg.add(draw);
         bg.add(stop);
 
+        JButton menu = new JButton("Back to Menu");
+        menu.setFont(new Font("Tahoma", Font.BOLD, 15));
+        menu.setBounds(20, 20, 150, 40);
+        menu.addActionListener(e -> {
+            int confirm = JOptionPane.showConfirmDialog(this,
+                    "Are you sure you want to quit this game?",
+                    "Exit Game",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (confirm == JOptionPane.YES_OPTION) {
+                frame.showMenu();
+            }
+        });
+        bg.add(menu);
+
         revalidate();
         repaint();
     }
