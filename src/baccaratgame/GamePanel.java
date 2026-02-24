@@ -2,6 +2,7 @@ package baccaratgame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class GamePanel extends JPanel {
 
@@ -104,13 +105,16 @@ public class GamePanel extends JPanel {
         }
     }
 
-    ImageIcon card(int num) {
+    public ImageIcon card(int num) {
+
         if (num <= 0) return new ImageIcon();
-        String[] cards = {
-                "A-H.png", "2-H.png", "3-H.png", "4-H.png", "5-H.png", "6-H.png",
-                "7-H.png", "8-H.png", "9-H.png", "10-H.png", "J-H.png", "Q-H.png", "K-H.png"
-        };
-        return load("/Baccaratimgame/" + cards[num - 1]);
+        java.util.Random rand = new java.util.Random();
+        String[] suits = {"H", "D", "C", "S"};
+        String randomSuit = suits[rand.nextInt(suits.length)];
+        String[] ranks = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+        String rankName = ranks[(num - 1) % 13];
+        String fileName = rankName + "-" + randomSuit + ".png";
+        return load("/Baccaratimgame/" + fileName);
     }
 
     ImageIcon load(String path) {
